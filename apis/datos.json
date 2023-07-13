@@ -1,0 +1,17 @@
+{
+    "id":1,
+    "nombre":"Meli Barrios",
+    "suscriptor_activo": true,
+    "post":[
+        {
+            "id":1,
+            "titulo":"titulo del primer post",
+            "texto":"texto del primer post"
+        },
+        {
+            "id":2,
+            "titulo":"titulo del segundo post",
+            "texto":"texto del segundo post"
+        }
+    ]
+}
