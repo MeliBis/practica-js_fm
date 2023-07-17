@@ -1,4 +1,5 @@
 import dataFotos from './datos/fotos'
+import { cargarImagen } from './galeria/cargarImagen';
 const contenedorCategorias =document.getElementById('categorias');
 const galeria = document.getElementById('galeria')
 
@@ -9,20 +10,26 @@ contenedorCategorias.addEventListener('click',(e)=>{
         galeria.classList.add('galeria--active');
         document.body.style.overflow="hidden";
 
+       
         //console.log(dataFotos);
         const categoriaActiva= e.target.closest('a').dataset.categoria;
+        galeria.dataset.categoria=categoriaActiva
+
         const fotos= dataFotos.fotos[categoriaActiva];
         const carousel= galeria.querySelector('.galeria__carousel-slides')
+        
+        const {id, nombre, ruta, descripcion} = fotos[0]
+        cargarImagen(id, nombre, ruta, descripcion)
         //console.log(fotos);
         carousel.innerHTML= ''
             fotos.forEach((foto) => {
                 const slide= `
                     <a href="#" class="galeria__carousel-slide">
-                        <img class="galeria__carousel-image" src="${foto.ruta}" alt="" />
+                        <img class="galeria__carousel-image" src="${foto.ruta}"data-id="${foto.id} alt="" />
                     </a>
                 `;
                 galeria.querySelector('.galeria__carousel-slides').innerHTML += slide;
-           });
-           galeria.querySelector('.galeria__carousel-slides').classList.add('galeria__carousel-slides--active')
+            });
+            galeria.querySelector('.galeria__carousel-slides').classList.add('galeria__carousel-slides--active')
     }
 })
